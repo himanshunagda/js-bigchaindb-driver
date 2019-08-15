@@ -54,7 +54,6 @@
     "eslint": "^5.0.1",
     "eslint-config-ascribe": "^3.0.5",
     "eslint-plugin-import": "^2.13.0",
-    "husky": "^0.14.3",
     "lint-staged": "^7.1.2",
     "nyc": "^12.0.1",
     "release-it": "^7.4.7",
@@ -69,17 +68,16 @@
     "buffer": "^5.1.0",
     "clone": "^2.1.1",
     "core-js": "^2.5.7",
-    "crypto-conditions": "^2.0.1",
+    "crypto-conditions": "git+https://github.com/himanshunagda/js-crypto-conditions.git",
     "decamelize": "^2.0.0",
     "es6-promise": "^4.2.4",
     "fetch-ponyfill": "^6.0.1",
     "isomorphic-fetch": "^2.2.1",
     "js-sha3": "^0.7.0",
     "js-utility-belt": "^1.5.0",
-    "json-stable-stringify": "^1.0.1",
+    "fast-json-stable-stringify": "^2.0.0",
     "query-string": "^6.0.0",
-    "sprintf-js": "^1.1.1",
-    "tweetnacl": "^1.0.0"
+    "sprintf-js": "^1.1.1"
   },
   "keywords": [
     "bigchaindb",
