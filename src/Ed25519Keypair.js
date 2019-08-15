@@ -1,5 +1,6 @@
-const base58 = require('bs58');
-const forge = require('node-forge');
+import base58 from 'bs58'
+import nacl from 'tweetnacl'
+
 /**
  * @public
  * Ed25519 keypair in base58 (as BigchainDB expects base58 keys)
@@ -8,13 +9,9 @@ const forge = require('node-forge');
  * @property {string} publicKey
  * @property {string} privateKey
  */
-const Ed25519Keypair = async () => {
-  var ed25519 = forge.pki.ed25519;
-  var keys = {};
-  var keyPair = ed25519.generateKeyPair();
-  keys.publicKey = await base58.encode(Buffer.from(keyPair.publicKey))
-  keys.privateKey = await base58.encode(Buffer.from(keyPair.privateKey.slice(0, 32)))
-  return keys;
-};
-
-module.exports = Ed25519Keypair;
+export default function Ed25519Keypair(seed) {
+    const keyPair = seed ? nacl.sign.keyPair.fromSeed(seed) : nacl.sign.keyPair()
+    this.publicKey = base58.encode(keyPair.publicKey)
+    // tweetnacl's generated secret key is the secret key + public key (resulting in a 64-byte buffer)
+    this.privateKey = base58.encode(keyPair.secretKey.slice(0, 32))
+}
