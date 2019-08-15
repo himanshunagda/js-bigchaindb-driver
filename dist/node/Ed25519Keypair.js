@@ -1,20 +1,5 @@
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = Ed25519Keypair;
-
-var _bs = require('bs58');
-
-var _bs2 = _interopRequireDefault(_bs);
-
-var _tweetnacl = require('tweetnacl');
-
-var _tweetnacl2 = _interopRequireDefault(_tweetnacl);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+const base58 = require('bs58');
+const forge = require('node-forge');
 /**
  * @public
  * Ed25519 keypair in base58 (as BigchainDB expects base58 keys)
@@ -23,9 +8,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
  * @property {string} publicKey
  * @property {string} privateKey
  */
-function Ed25519Keypair(seed) {
-  var keyPair = seed ? _tweetnacl2.default.sign.keyPair.fromSeed(seed) : _tweetnacl2.default.sign.keyPair();
-  this.publicKey = _bs2.default.encode(keyPair.publicKey);
-  // tweetnacl's generated secret key is the secret key + public key (resulting in a 64-byte buffer)
-  this.privateKey = _bs2.default.encode(keyPair.secretKey.slice(0, 32));
-}
+const Ed25519Keypair = async () => {
+  var ed25519 = forge.pki.ed25519;
+  var keys = {};
+  var keyPair = ed25519.generateKeyPair();
+  keys.publicKey = await base58.encode(Buffer.from(keyPair.publicKey))
+  keys.privateKey = await base58.encode(Buffer.from(keyPair.privateKey.slice(0, 32)))
+  return keys;
+};
+
+module.exports = Ed25519Keypair;
