@@ -8,7 +8,7 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _buffer = require('buffer');
 
-var _jsonStableStringify = require('json-stable-stringify');
+var _jsonStableStringify = require('fast-json-stable-stringify');
 
 var _jsonStableStringify2 = _interopRequireDefault(_jsonStableStringify);
 
