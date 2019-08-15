@@ -68,7 +68,7 @@
     "buffer": "^5.1.0",
     "clone": "^2.1.1",
     "core-js": "^2.5.7",
-    "crypto-conditions": "git+https://github.com/himanshunagda/js-crypto-conditions.git",
+    "crypto-conditions": "^2.0.1",
     "decamelize": "^2.0.0",
     "es6-promise": "^4.2.4",
     "fetch-ponyfill": "^6.0.1",
