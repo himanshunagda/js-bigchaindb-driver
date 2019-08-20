@@ -1,5 +1,5 @@
 import { Buffer } from 'buffer'
-import stableStringify from 'json-stable-stringify'
+import stableStringify from 'fast-json-stable-stringify'
 import clone from 'clone'
 import base58 from 'bs58'
 import cc from 'crypto-conditions'

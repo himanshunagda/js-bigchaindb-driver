@@ -69,17 +69,17 @@
     "buffer": "^5.1.0",
     "clone": "^2.1.1",
     "core-js": "^2.5.7",
-    "crypto-conditions": "^2.0.1",
+    "crypto-conditions": "git+https://gitlab.tymlez.com/os/js-crypto-conditions.git#dev/3.0",
     "decamelize": "^2.0.0",
     "es6-promise": "^4.2.4",
     "fetch-ponyfill": "^6.0.1",
     "isomorphic-fetch": "^2.2.1",
     "js-sha3": "^0.7.0",
     "js-utility-belt": "^1.5.0",
-    "json-stable-stringify": "^1.0.1",
+    "fast-json-stable-stringify": "^2.0.0",
     "query-string": "^6.0.0",
     "sprintf-js": "^1.1.1",
-    "tweetnacl": "^1.0.0"
+    "node-forge": "^0.8.5"
   },
   "keywords": [
     "bigchaindb",

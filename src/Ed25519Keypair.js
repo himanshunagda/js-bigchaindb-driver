@@ -1,5 +1,17 @@
-import base58 from 'bs58'
-import nacl from 'tweetnacl'
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = Ed25519Keypair;
+
+var _bs = require('bs58');
+
+var _bs2 = _interopRequireDefault(_bs);
+
+var forge = require('node-forge');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /**
  * @public
@@ -9,9 +21,9 @@ import nacl from 'tweetnacl'
  * @property {string} publicKey
  * @property {string} privateKey
  */
-export default function Ed25519Keypair(seed) {
-    const keyPair = seed ? nacl.sign.keyPair.fromSeed(seed) : nacl.sign.keyPair()
-    this.publicKey = base58.encode(keyPair.publicKey)
-    // tweetnacl's generated secret key is the secret key + public key (resulting in a 64-byte buffer)
-    this.privateKey = base58.encode(keyPair.secretKey.slice(0, 32))
+function Ed25519Keypair(seed) {
+  var ed25519 = forge.pki.ed25519;
+  var keyPair = ed25519.generateKeyPair();
+  this.publicKey = _bs2.default.encode(keyPair.publicKey);
+  this.privateKey = _bs2.default.encode(keyPair.privateKey.slice(0, 32));
 }
